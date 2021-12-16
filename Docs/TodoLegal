@@ -1,0 +1,13 @@
+server{
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name 0.0.0.0;
+
+    # Tell Nginx and Passenger where your app's 'public' directory is
+    root /home/deploy/TodoLegal/public;
+
+    # Turn on passenger
+    passenger_enabled on;
+    passenger_ruby /usr/local/rbenv/versions/3.0.0/bin/ruby;
+
+}
