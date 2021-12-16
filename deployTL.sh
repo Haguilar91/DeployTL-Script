@@ -68,6 +68,7 @@ git init
 git remote add origin https://github.com/TodoLegal/TodoLegal.git
 git pull origin "$TL_BRANCH"
 echo "ELASTICSEARCH_URL: ENV["\""ELASTICSEARCH_URL"\""]" >> ~/TodoLegal/config/application.yml
+EDITOR="nano" bin/rails credentials:edit
 sudo apt-get install -y postgresql-client libpq-dev
 bundle install
 sudo apt-get install -y dirmngr gnupg
@@ -78,11 +79,9 @@ sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger foc
 sudo apt-get update
 sudo apt-get install -y libnginx-mod-http-passenger
 `if [ ! -f /etc/nginx/modules-enabled/50-mod-http-passenger.conf ]; then sudo ln -s /usr/share/nginx/modules-available/mod-http-passenger.load /etc/nginx/modules-enabled/50-mod-http-passenger.conf ; fi`
-sudo cp ~/Docs/TodoLegal /etc/nginx/sites-enabled/
+sudo cp Docs/TodoLegal /etc/nginx/sites-enabled/
 sudo service nginx restart
-EDITOR="nano" bin/rails credentials:edit
-xdotool key ctrl+o
-xdotool key enter
+
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
