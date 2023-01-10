@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 RUBY_VERSION=3.0.0
 SCRIPT_USER=$SUDO_USER
