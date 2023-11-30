@@ -54,21 +54,25 @@ sudo apt autoremove -y
 
 
 
-cd ~
-
-git clone http://github.com/rbenv/rbenv.git rbenv
-
-git clone https://github.com/rbenv/rbenv-vars.git ~/.rbenv/plugins/rbenv-vars
+cd /home/"$SCRIPT_USER"
 
 
 
-chgrp -R staff rbenv
-
-chmod -R g+rwxXs rbenv
+echo "Rbenv Install Path "$(pwd)
 
 
 
-echo 'export RBENV_ROOT=~/.rbenv' >> /home/"$SCRIPT_USER"/.bashrc
+git clone http://github.com/rbenv/rbenv.git .rbenv
+
+git clone https://github.com/rbenv/rbenv-vars.git /home/"$SCRIPT_USER"/.rbenv/plugins/rbenv-vars
+
+
+
+chmod 777 -R /home/"$SCRIPT_USER"/.rbenv
+
+
+
+echo 'export RBENV_ROOT=/home/"$SCRIPT_USER"/.rbenv' >> /home/"$SCRIPT_USER"/.bashrc
 
 echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /home/"$SCRIPT_USER"/.bashrc
 
@@ -76,7 +80,7 @@ echo 'eval "$(rbenv init -)"' >> /home/"$SCRIPT_USER"/.bashrc
 
 
 
-echo 'export RBENV_ROOT=~/.rbenv' >> /home/"$SCRIPT_USER"/.zshrc
+echo 'export RBENV_ROOT=/home/"$SCRIPT_USER"/.rbenv' >> /home/"$SCRIPT_USER"/.zshrc
 
 echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /home/"$SCRIPT_USER"/.zshrc
 
@@ -84,7 +88,7 @@ echo 'eval "$(rbenv init -)"' >> /home/"$SCRIPT_USER"/.zshrc
 
 
 
-echo 'export RBENV_ROOT=~/.rbenv' >> /root/.bashrc
+echo 'export RBENV_ROOT=/home/"$SCRIPT_USER"/.rbenv' >> /root/.bashrc
 
 echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /root/.bashrc
 
@@ -92,7 +96,7 @@ echo 'eval "$(rbenv init -)"' >> /root/.bashrc
 
 
 
-export RBENV_ROOT=~/rbenv
+export RBENV_ROOT=/home/"$SCRIPT_USER"/.rbenv
 
 export PATH="$RBENV_ROOT/bin:$PATH"
 
@@ -106,7 +110,7 @@ git clone https://github.com/rbenv/ruby-build.git /home/"$SCRIPT_USER"/.rbenv/pl
 
 
 
-echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> /root/.bashrc
+
 
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> /home/"$SCRIPT_USER"/.bashrc
 
@@ -114,7 +118,11 @@ echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> /home/"$SCRIPT
 
 
 
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+chmod 777 -R /home/"$SCRIPT_USER"/.rbenv
+
+
+
+source /home/"$SCRIPT_USER"/.bashrc
 
 
 
@@ -142,11 +150,15 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 
 sudo apt update && sudo apt install -y yarn
 
-cd ~
+
+
+cd /home/"$SCRIPT_USER"
+
+
 
 mkdir TodoLegal
 
-cd ~/TodoLegal
+cd /home/"$SCRIPT_USER"/TodoLegal
 
 git init
 
@@ -154,11 +166,17 @@ git remote add origin https://github.com/TodoLegal/TodoLegal.git
 
 git pull origin "$TL_BRANCH"
 
-echo "ELASTICSEARCH_URL: ENV["\""ELASTICSEARCH_URL"\""]" >> ~/TodoLegal/config/application.yml
+echo "ELASTICSEARCH_URL: ENV["\""ELASTICSEARCH_URL"\""]" >> /home/"$SCRIPT_USER"/TodoLegal/config/application.yml
 
 EDITOR="nano" bin/rails credentials:edit
 
+chmod 777 -R /home/"$SCRIPT_USER"/TodoLegal
+
+
+
 sudo apt-get install -y postgresql-client libpq-dev
+
+
 
 bundle install
 
