@@ -199,7 +199,7 @@ sudo apt-get install -y libnginx-mod-http-passenger
 cd $CURRENT_PATH
 
 sudo cp Docs/TodoLegal /etc/nginx/sites-enabled/
-
+sudo rm /etc/nginx/sites-enabled/default
 sudo service nginx restart
 
 
