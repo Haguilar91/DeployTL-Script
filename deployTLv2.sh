@@ -72,7 +72,7 @@ chmod 777 -R /home/"$SCRIPT_USER"/.rbenv
 
 
 
-echo 'export RBENV_ROOT=/home/"$SCRIPT_USER"/.rbenv' >> /home/"$SCRIPT_USER"/.bashrc
+echo 'export RBENV_ROOT=/home/'$SCRIPT_USER'/.rbenv' >> /home/"$SCRIPT_USER"/.bashrc
 
 echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /home/"$SCRIPT_USER"/.bashrc
 
@@ -80,7 +80,7 @@ echo 'eval "$(rbenv init -)"' >> /home/"$SCRIPT_USER"/.bashrc
 
 
 
-echo 'export RBENV_ROOT=/home/"$SCRIPT_USER"/.rbenv' >> /home/"$SCRIPT_USER"/.zshrc
+echo 'export RBENV_ROOT=/home/'$SCRIPT_USER'/.rbenv' >> /home/"$SCRIPT_USER"/.zshrc
 
 echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /home/"$SCRIPT_USER"/.zshrc
 
@@ -88,7 +88,7 @@ echo 'eval "$(rbenv init -)"' >> /home/"$SCRIPT_USER"/.zshrc
 
 
 
-echo 'export RBENV_ROOT=/home/"$SCRIPT_USER"/.rbenv' >> /root/.bashrc
+echo 'export RBENV_ROOT=/home/'$SCRIPT_USER'/.rbenv' >> /root/.bashrc
 
 echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /root/.bashrc
 
