@@ -49,6 +49,7 @@ echo 'Well, here we go! Running the script...'
 sudo apt update
 
 sudo apt install -y build-essential libssl-dev zlib1g-dev git
+sudo apt-get install -y libcurl4-openssl-dev ruby-dev
 
 sudo apt autoremove -y
 
